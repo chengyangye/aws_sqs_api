@@ -27,7 +27,7 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 
-import amazonaws.sqs.SampleDriver;
+import amazonaws.sqs.model.TestPara;
 
 public class SQSClient {
     private JAXBContext jaxbContext;
@@ -162,7 +162,7 @@ public class SQSClient {
     }
 
     private void prepareHttpRequest() throws Exception {
-        queryParams.put("AWSAccessKeyId", SampleDriver.accessKeyId);
+        queryParams.put("AWSAccessKeyId", TestPara.accessKeyId);
 //        queryParams.put("Version", "2008-01-01");
         queryParams.put("Version", "2012-11-05");
         queryParams.put("Action", action);
@@ -176,7 +176,7 @@ public class SQSClient {
     }
 
     private String calculateSignature(String stringToSign) throws Exception {
-        return AwsSignature.calculate(stringToSign, SampleDriver.secretAccessKey);
+        return AwsSignature.calculate(stringToSign, TestPara.secretAccessKey);
     }
 
     private static String getExpires() {
